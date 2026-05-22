@@ -1,0 +1,9 @@
+sample,condition,batch,sex,age
+ctrl_1,control,A,M,45
+ctrl_2,control,A,F,52
+ctrl_3,control,B,M,38
+ctrl_4,control,B,F,61
+treated_1,treated,A,M,47
+treated_2,treated,A,F,55
+treated_3,treated,B,M,41
+treated_4,treated,B,F,58

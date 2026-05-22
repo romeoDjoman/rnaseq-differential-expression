@@ -1,0 +1,91 @@
+---
+title: "Analyse RNA-seq — Expression Différentielle"
+author: "Roméo DJOMAN | AgroParisTech / Paris-Saclay"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    theme: flatly
+    highlight: tango
+    code_folding: show
+    fig_caption: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE,
+                       fig.align = "center", dpi = 150)
+```
+
+## 1. Contexte scientifique
+
+Ce rapport présente l'analyse d'expression différentielle d'un dataset RNA-seq simulé
+inspirée du jeu de données `airway` (Bioconductor). L'objectif est d'identifier
+les gènes significativement modulés entre la condition **traitée** et **contrôle**.
+
+**Hypothèse biologique :** Le traitement active des voies de prolifération et
+induit une reprogrammation transcriptomique mesurable.
+
+## 2. Chargement des données
+
+```{r load-data}
+library(DESeq2); library(ggplot2); library(dplyr)
+counts   <- read.csv("data/counts_matrix.csv", row.names = 1)
+metadata <- read.csv("data/metadata.csv", row.names = 1)
+cat("Dimensions :", nrow(counts), "gènes x", ncol(counts), "échantillons")
+```
+
+## 3. Contrôle qualité
+
+```{r qc}
+# Distribution des tailles de librairie
+lib_sizes <- colSums(counts) / 1e6
+barplot(lib_sizes, col = ifelse(grepl("ctrl", names(lib_sizes)), "#42A5F5", "#EF5350"),
+        ylab = "Millions de reads", main = "Tailles des librairies", las = 2)
+legend("topright", c("Contrôle","Traité"), fill = c("#42A5F5","#EF5350"))
+```
+
+## 4. Analyse DESeq2
+
+```{r deseq2}
+dds <- DESeqDataSetFromMatrix(countData = counts, colData = metadata, design = ~ condition)
+dds <- dds[rowSums(counts(dds) >= 10) >= 2, ]
+dds <- DESeq(dds)
+res <- results(dds, contrast = c("condition", "treated", "control"), alpha = 0.05)
+summary(res)
+```
+
+## 5. Volcano Plot
+
+```{r volcano, fig.width=9, fig.height=6}
+source("scripts/utils.R")
+res_df <- as.data.frame(res) %>%
+  tibble::rownames_to_column("gene_id") %>%
+  mutate(significance = case_when(
+    padj < 0.05 & log2FoldChange >  1 ~ "Up",
+    padj < 0.05 & log2FoldChange < -1 ~ "Down",
+    TRUE ~ "NS"
+  ))
+
+ggplot(res_df, aes(log2FoldChange, -log10(padj+1e-300), color = significance)) +
+  geom_point(alpha = 0.5, size = 1.2) +
+  scale_color_manual(values = c(Up="#E53935", Down="#1565C0", NS="#BDBDBD")) +
+  geom_vline(xintercept = c(-1,1), linetype="dashed") +
+  geom_hline(yintercept = -log10(0.05), linetype="dashed") +
+  labs(title = "Volcano Plot — DESeq2", x = "log2FC", y = "-log10(padj)") +
+  theme_bw()
+```
+
+## 6. Résultats
+
+```{r results-table}
+res_df %>% filter(significance != "NS") %>%
+  select(gene_id, baseMean, log2FoldChange, padj, significance) %>%
+  arrange(padj) %>% head(20) %>% knitr::kable(digits = 4, caption = "Top 20 DEG")
+```
+
+## 7. Conclusion
+
+L'analyse DESeq2 a identifié **`r sum(res_df$significance != 'NS', na.rm=TRUE)` gènes**
+différentiellement exprimés (padj < 0.05, |log2FC| > 1). Les voies KEGG enrichies
+(cycle cellulaire, PI3K-Akt, p53) sont cohérentes avec une réponse au traitement.

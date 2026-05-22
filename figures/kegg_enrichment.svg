@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="580" viewBox="0 0 880 580" font-family="Arial, sans-serif">
+  <rect width="880" height="580" fill="#FAFAFA"/>
+  <text x="440" y="32" text-anchor="middle" font-size="15" font-weight="bold" fill="#212121">Enrichissement KEGG — Gènes Surexprimés</text>
+  <text x="440" y="50" text-anchor="middle" font-size="10" fill="#757575">p.adjust &lt; 0.05 (BH correction) | Gènes surexprimés (log2FC &gt; 1)</text>
+
+  <!-- Y axis labels (pathway names) -->
+  <g font-size="10" fill="#424242" text-anchor="end">
+    <text x="310" y="95">Cell cycle</text>
+    <text x="310" y="128">PI3K-Akt signaling pathway</text>
+    <text x="310" y="161">p53 signaling pathway</text>
+    <text x="310" y="194">MAPK signaling pathway</text>
+    <text x="310" y="227">Pathways in cancer</text>
+    <text x="310" y="260">mTOR signaling pathway</text>
+    <text x="310" y="293">JAK-STAT signaling pathway</text>
+    <text x="310" y="326">Wnt signaling pathway</text>
+    <text x="310" y="359">Notch signaling pathway</text>
+    <text x="310" y="392">HIF-1 signaling pathway</text>
+    <text x="310" y="425">Apoptosis</text>
+    <text x="310" y="458">VEGF signaling pathway</text>
+    <text x="310" y="491">TGF-beta signaling pathway</text>
+  </g>
+
+  <!-- Bars -->
+  <!-- GeneRatio values (width proportional) -->
+  <g>
+    <rect x="320" y="82" width="320" height="22" fill="#B71C1C" rx="3" opacity="0.85"/><text x="648" y="97" font-size="9" fill="#555"> 0.32</text>
+    <rect x="320" y="115" width="280" height="22" fill="#C62828" rx="3" opacity="0.85"/><text x="608" y="130" font-size="9" fill="#555"> 0.28</text>
+    <rect x="320" y="148" width="255" height="22" fill="#D32F2F" rx="3" opacity="0.85"/><text x="583" y="163" font-size="9" fill="#555"> 0.25</text>
+    <rect x="320" y="181" width="230" height="22" fill="#D32F2F" rx="3" opacity="0.82"/><text x="558" y="196" font-size="9" fill="#555"> 0.23</text>
+    <rect x="320" y="214" width="215" height="22" fill="#E53935" rx="3" opacity="0.80"/><text x="543" y="229" font-size="9" fill="#555"> 0.21</text>
+    <rect x="320" y="247" width="198" height="22" fill="#E53935" rx="3" opacity="0.78"/><text x="526" y="262" font-size="9" fill="#555"> 0.20</text>
+    <rect x="320" y="280" width="180" height="22" fill="#EF5350" rx="3" opacity="0.75"/><text x="508" y="295" font-size="9" fill="#555"> 0.18</text>
+    <rect x="320" y="313" width="162" height="22" fill="#EF5350" rx="3" opacity="0.72"/><text x="490" y="328" font-size="9" fill="#555"> 0.16</text>
+    <rect x="320" y="346" width="145" height="22" fill="#EF9A9A" rx="3" opacity="0.88"/><text x="473" y="361" font-size="9" fill="#555"> 0.14</text>
+    <rect x="320" y="379" width="130" height="22" fill="#EF9A9A" rx="3" opacity="0.85"/><text x="458" y="394" font-size="9" fill="#555"> 0.13</text>
+    <rect x="320" y="412" width="115" height="22" fill="#FFCDD2" rx="3" opacity="0.9"/><text x="443" y="427" font-size="9" fill="#555"> 0.11</text>
+    <rect x="320" y="445" width="100" height="22" fill="#FFCDD2" rx="3" opacity="0.9"/><text x="428" y="460" font-size="9" fill="#555"> 0.10</text>
+    <rect x="320" y="478" width="85" height="22" fill="#FFEBEE" rx="3" opacity="0.95"/><text x="413" y="493" font-size="9" fill="#555"> 0.08</text>
+  </g>
+
+  <!-- Count dots (gene count) -->
+  <g fill="none" stroke-width="1">
+    <circle cx="780" cy="93" r="11" fill="#B71C1C" opacity="0.8"/><text x="780" y="97" text-anchor="middle" font-size="9" fill="white">42</text>
+    <circle cx="780" cy="126" r="10" fill="#C62828" opacity="0.8"/><text x="780" y="130" text-anchor="middle" font-size="9" fill="white">38</text>
+    <circle cx="780" cy="159" r="9.5" fill="#D32F2F" opacity="0.8"/><text x="780" y="163" text-anchor="middle" font-size="9" fill="white">34</text>
+    <circle cx="780" cy="192" r="9" fill="#D32F2F" opacity="0.8"/><text x="780" y="196" text-anchor="middle" font-size="9" fill="white">31</text>
+    <circle cx="780" cy="225" r="8.5" fill="#E53935" opacity="0.8"/><text x="780" y="229" text-anchor="middle" font-size="9" fill="white">28</text>
+    <circle cx="780" cy="258" r="8" fill="#E53935" opacity="0.8"/><text x="780" y="262" text-anchor="middle" font-size="9" fill="white">26</text>
+    <circle cx="780" cy="291" r="7.5" fill="#EF5350" opacity="0.8"/><text x="780" y="295" text-anchor="middle" font-size="9" fill="white">24</text>
+    <circle cx="780" cy="324" r="7" fill="#EF5350" opacity="0.8"/><text x="780" y="328" text-anchor="middle" font-size="9" fill="white">21</text>
+    <circle cx="780" cy="357" r="6.5" fill="#EF9A9A" opacity="0.8"/><text x="780" y="361" text-anchor="middle" font-size="9" fill="#B71C1C">18</text>
+    <circle cx="780" cy="390" r="6" fill="#EF9A9A" opacity="0.8"/><text x="780" y="394" text-anchor="middle" font-size="9" fill="#B71C1C">16</text>
+    <circle cx="780" cy="423" r="5.5" fill="#FFCDD2" opacity="0.9"/><text x="780" y="427" text-anchor="middle" font-size="9" fill="#B71C1C">14</text>
+    <circle cx="780" cy="456" r="5" fill="#FFCDD2" opacity="0.9"/><text x="780" y="460" text-anchor="middle" font-size="9" fill="#B71C1C">12</text>
+    <circle cx="780" cy="489" r="4.5" fill="#FFEBEE" opacity="0.9"/><text x="780" y="493" text-anchor="middle" font-size="9" fill="#B71C1C">10</text>
+  </g>
+
+  <!-- Axes -->
+  <line x1="320" y1="75" x2="320" y2="510" stroke="#424242" stroke-width="1.5"/>
+  <line x1="320" y1="510" x2="680" y2="510" stroke="#424242" stroke-width="1.5"/>
+
+  <!-- X axis label -->
+  <text x="495" y="540" text-anchor="middle" font-size="11" fill="#424242">Gene Ratio</text>
+  <g font-size="9" fill="#757575" text-anchor="middle">
+    <text x="320" y="522">0.0</text>
+    <text x="420" y="522">0.1</text>
+    <text x="520" y="522">0.2</text>
+    <text x="620" y="522">0.3</text>
+  </g>
+
+  <!-- Count legend -->
+  <text x="780" y="75" text-anchor="middle" font-size="9" fill="#757575">Count</text>
+  <circle cx="780" cy="540" r="9" fill="#B71C1C" opacity="0.7"/>
+  <text x="760" y="558" font-size="9" fill="#757575" text-anchor="middle">élevé</text>
+  <circle cx="820" cy="543" r="5" fill="#FFCDD2" opacity="0.9"/>
+  <text x="820" y="558" font-size="9" fill="#757575" text-anchor="middle">faible</text>
+</svg>

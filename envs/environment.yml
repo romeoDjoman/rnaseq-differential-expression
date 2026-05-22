@@ -1,0 +1,29 @@
+name: rnaseq-env
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.10
+  - r-base=4.3
+  - r-deseq2
+  - r-ggplot2
+  - r-ggrepel
+  - r-pheatmap
+  - r-rcolorbrewer
+  - r-dplyr
+  - r-rmarkdown
+  - r-tibble
+  - r-clusterprofiler
+  - bioconductor-org.hs.eg.db
+  - bioconductor-enrichplot
+  - bioconductor-apeglm
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - scipy
+  - jupyter
+  - pip
+  - pip:
+    - biopython
